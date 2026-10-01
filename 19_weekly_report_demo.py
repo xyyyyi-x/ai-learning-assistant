@@ -1,7 +1,7 @@
 """真实生成一次学习周报。
 
 会调用一次模型（产生少量 API 用量），并把周报保存到
-week2/generated_reports/weekly_report.md。
+generated_reports/weekly_report.md。
 """
 import json
 from pathlib import Path
@@ -21,7 +21,7 @@ def main() -> None:
     env_path = base_dir / ".env"
     if not env_path.is_file():
         print(f"缺少配置文件：{env_path}")
-        print("请先按照 README 配置 week2/.env（模型密钥和数据库路径）。")
+        print("请先按照 README 配置 .env（模型密钥和数据库路径）。")
         return
 
     load_dotenv(env_path, override=True, encoding="utf-8-sig")

@@ -57,7 +57,7 @@ def main() -> None:
     env_path = base_dir / ".env"
     if not env_path.is_file():
         print(f"缺少配置文件：{env_path}")
-        print("请先按照 README 配置 week2/.env。")
+        print("请先按照 README 配置 .env。")
         return
 
     load_dotenv(env_path, override=True, encoding="utf-8-sig")

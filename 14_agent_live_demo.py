@@ -18,7 +18,7 @@ def main():
 
     env_path = Path(__file__).resolve().parent / ".env"
     if not env_path.is_file():
-        raise ValueError("缺少week2/.env配置文件")
+        raise ValueError("缺少 .env 配置文件")
 
     load_dotenv(
         env_path,

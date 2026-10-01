@@ -12,7 +12,7 @@ def main():
     # 加载 .env，脚本所在目录下的.env，沿用override=True, encoding="utf-8-sig"
     env_path = Path(__file__).resolve().parent / ".env"
     if not env_path.is_file():
-        raise ValueError("缺少week2/.env配置文件")
+        raise ValueError("缺少 .env 配置文件")
 
     load_dotenv(
         env_path,
