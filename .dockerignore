@@ -1,0 +1,17 @@
+.venv*
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.git
+.idea
+
+.env
+.env.*
+*.db*
+*.sqlite*
+*.sqlite3*
+
+[0-9]*.py
+test_*.py
+start_app.py
+*.md

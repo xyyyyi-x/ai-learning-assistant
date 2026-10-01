@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的任务列表</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>我的任务列表</h1>
+        <form id="task-form">
+            <label for="task-title">任务标题</label>
+            <input id="task-title" type="text" maxlength="50">
+            <label for="task-priority">优先级</label>
+            <select id="task-priority">
+                <option value="1">普通</option>
+                <option value="2">重要</option>
+                <option value="3">紧急</option>
+            </select>
+            <button type="submit">添加任务</button>
+        </form>
+        <p id="message" role="status"></p>
+        <label for="priority-filter">筛选优先级</label>
+        <select id="priority-filter">
+            <option value="">全部</option>
+            <option value="1">普通</option>
+            <option value="2">重要</option>
+            <option value="3">紧急</option>
+        </select>
+        <p id="task-count"></p>
+        <ul id="task-list"></ul>
+        <section>
+            <h2>AI学习建议</h2>
+
+            <form id="ai-form">
+                <label for="ai-goal">学习目标</label>
+                <input
+                    id="ai-goal"
+                    type="text"
+                    maxlength="200"
+                    placeholder="例如：学习Python函数"
+                >
+                <button id="ai-submit" type="submit">生成建议</button>
+            </form>
+
+            <p id="ai-message" role="status"></p>
+            <p>生成后可以修改任务标题，或移除不需要的建议。</p>
+            <div id="ai-result"></div>
+        </section>
+        <section>
+            <h2>任务查询助手</h2>
+            <p>根据已保存的任务回答问题，本入口只查询，不修改任务。</p>
+
+            <form id="assistant-form">
+                <label for="assistant-goal">你的问题</label>
+                <input
+                    id="assistant-goal"
+                    type="text"
+                    maxlength="200"
+                    placeholder="例如：我还有哪些任务没完成？"
+                >
+                <button id="assistant-submit" type="submit">查询任务</button>
+            </form>
+
+            <p id="assistant-message" role="status"></p>
+            <div id="assistant-result"></div>
+        </section>
+        <section>
+            <h2>学习资料问答</h2>
+            <p>根据学习资料回答。关键词请用空格分隔，例如：函数 返回。</p>
+
+            <form id="knowledge-form">
+                <label for="knowledge-question">问题</label>
+                <input
+                    id="knowledge-question"
+                    type="text"
+                    maxlength="500"
+                    placeholder="Python函数没有return时返回什么？"
+                >
+
+                <label for="knowledge-keywords">检索关键词</label>
+                <input
+                    id="knowledge-keywords"
+                    type="text"
+                    maxlength="200"
+                    placeholder="函数 返回"
+                >
+
+                <button id="knowledge-submit" type="submit">查询资料</button>
+            </form>
+
+            <p id="knowledge-message" role="status"></p>
+            <div id="knowledge-answer"></div>
+            <div id="knowledge-sources"></div>
+        </section>
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>

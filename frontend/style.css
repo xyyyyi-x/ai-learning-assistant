@@ -1,0 +1,78 @@
+body {
+    font-family: sans-serif;
+    background: #f5f6f8;
+    color: #222;
+    margin: 0;
+}
+
+.container {
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 24px;
+    background: white;
+}
+
+input,
+button {
+    font: inherit;
+    padding: 8px;
+}
+
+#task-list {
+    padding: 0;
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.task-item.done .task-text {
+    text-decoration: line-through;
+    color: #777;
+}
+
+#message {
+    color: #555;
+}
+#message.success {
+    color: #18794e;
+}
+#message.error {
+    color: #b42318;
+}
+
+#ai-result {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font: inherit;
+}
+
+#ai-message.error {
+    color: #b42318;
+}
+
+.suggestion-item {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.suggestion-title {
+    flex: 1;
+    min-width: 0;
+}
+
+#assistant-result {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+#knowledge-answer,
+#knowledge-sources {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}

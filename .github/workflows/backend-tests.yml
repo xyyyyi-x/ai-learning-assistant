@@ -1,0 +1,78 @@
+name: AI learning assistant checks
+
+on:
+  push:
+    paths:
+      - "**/*.py"
+      - "requirements.txt"
+      - "frontend/**"
+      - "vue-frontend/**"
+      - "knowledge/**"
+      - ".github/workflows/backend-tests.yml"
+  pull_request:
+    paths:
+      - "**/*.py"
+      - "requirements.txt"
+      - "frontend/**"
+      - "vue-frontend/**"
+      - "knowledge/**"
+      - ".github/workflows/backend-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+          cache: "pip"
+          cache-dependency-path: "requirements.txt"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run offline backend tests
+        run: >
+          python -m pytest -q
+          --ignore=test_ai_frontend.py
+          --ignore=test_vue_frontend.py
+          --ignore=mysql_practice
+
+  frontend-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    defaults:
+      run:
+        working-directory: vue-frontend
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: "vue-frontend/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm exec eslint .
+
+      - name: Build Vue frontend
+        run: npm run build
