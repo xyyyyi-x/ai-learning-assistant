@@ -12,8 +12,13 @@ def calculate_weekly_stats(rows: list[tuple]) -> dict:
     """
     total = len(rows)
 
-    completed_titles = [row[1] for row in rows if row[2] == 1]
-    pending_titles = [row[1] for row in rows if row[2] != 1]
+    completed_by_title = {}
+    pending_by_title = {}
+    for row in rows:
+        target = completed_by_title if row[2] == 1 else pending_by_title
+        target[row[1]] = row[0]
+    completed_titles = list(completed_by_title)
+    pending_titles = list(pending_by_title)
 
     completed = len(completed_titles)
     pending = len(pending_titles)
