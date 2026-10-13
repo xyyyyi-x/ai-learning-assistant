@@ -14,14 +14,14 @@ def query_tasks(
 
     if title_query is not None and not isinstance(title_query, str):
         raise TypeError("title_query必须是字符串")
-    keyword = title_query.strip().lower() if title_query is not None else ""
+    keyword = title_query.strip().casefold() if title_query is not None else ""
     rows = task_db.list_tasks(db_path)
     result = []
 
     # 遍历、筛选、转字典
     for row in rows:
         task_completed = bool(row[2])
-        if task_completed == completed and keyword in row[1].lower():
+        if task_completed == completed and keyword in row[1].casefold():
             task = {
                 "id": row[0],
                 "title": row[1],
