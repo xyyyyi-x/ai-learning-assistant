@@ -5,13 +5,14 @@ import task_db
 def query_tasks(
     db_path: Path,
     completed: bool = False,
+    priority: int | None = None,
 ) -> list[dict]:
     """按完成状态查询任务，只读取数据库。"""
 
     if type(completed) is not bool:
         raise TypeError("completed必须是布尔值")
 
-    rows = task_db.list_tasks(db_path)
+    rows = task_db.list_tasks(db_path, priority=priority)
     result = []
 
     # 遍历、筛选、转字典
