@@ -31,3 +31,14 @@ def calculate_weekly_stats(rows: list[tuple]) -> dict:
         "completed_titles": completed_titles,
         "pending_titles": pending_titles,
     }
+
+
+def format_weekly_summary(rows: list[tuple]) -> str:
+    """生成无需模型服务的周报概览。"""
+    stats = calculate_weekly_stats(rows)
+    return (
+        f"任务总数：{stats['total']}\n"
+        f"已完成：{stats['completed']}\n"
+        f"未完成：{stats['pending']}\n"
+        f"完成率：{stats['completion_rate']:.1f}%"
+    )
