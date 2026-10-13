@@ -12,6 +12,8 @@ def split_documents(
     for doc in documents:
         source = doc["source"]
         text = doc["text"]
+        if not text.strip(" "):
+            continue
 
         chunk_index = 1
         for start in range(0, len(text), chunk_size):
